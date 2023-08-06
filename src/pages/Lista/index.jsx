@@ -20,11 +20,11 @@ export const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Lista de livros</h1>
-      <ul>
+    <div className="container mt-4">
+      <h1 className="mb-3 display-4">Lista de livros</h1>
+      <ul className="list-group">
         {book.map((book) => (
-          <li key={book.id}>
+          <li key={book.id} className="list-group-item fs-5">
             {book.title} - {book.author}
           </li>
         ))}

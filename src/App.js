@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Home } from "./pages/Livros";
+import { Home } from "./pages/Lista";
 import { Cadastrar } from "./pages/Cadastrar";
 import { Atualizar } from "./pages/Atualizar";
 import Footer from "./pages/Home/Footer";
