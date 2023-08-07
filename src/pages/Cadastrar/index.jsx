@@ -38,7 +38,7 @@ export const Cadastrar = () => {
     if (message) {
       timer = setTimeout(() => {
         setMessage("");
-      }, 2000); 
+      }, 2000);
     }
     return () => clearTimeout(timer);
   }, [message]);
