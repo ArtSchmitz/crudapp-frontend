@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export const Home = () => {
+export const Lista = () => {
   const [book, setBook] = useState([]);
 
   useEffect(() => {
@@ -11,6 +11,7 @@ export const Home = () => {
         .then((response) => {
           console.log(response.data);
           setBook(response.data);
+          console.log(response)
         })
         .catch((error) => {
           console.log(error);
@@ -25,7 +26,7 @@ export const Home = () => {
       <ul className="list-group">
         {book.map((book) => (
           <li key={book.id} className="list-group-item fs-5">
-            {book.title} - {book.author}
+            {book.title} - {book.author} - {book.publisher}
           </li>
         ))}
       </ul>
