@@ -20,8 +20,8 @@ export const Atualizar = () => {
           console.log()
         })
     } catch (error) {
-      console.error(error);
-      setMessage();
+      console.error(error.message);
+      setMessage('Preencha todos os campos');
     }
   };
 
