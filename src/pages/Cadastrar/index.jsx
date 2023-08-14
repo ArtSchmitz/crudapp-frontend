@@ -6,6 +6,8 @@ export const Cadastrar = () => {
   const [author, setAuthor] = useState("");
   const [publisher, setPublisher] = useState("");
   const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
 
   const newBook = {
     title: title,
@@ -24,7 +26,8 @@ export const Cadastrar = () => {
         setMessage(response.data.message);
       })
       .catch((error) => {
-        console.error("Erro ao cadastrar o livro", error);
+        console.error(error);
+        setErrorMessage("Erro ao cadastrar livro!");
       });
   };
 
@@ -48,56 +51,64 @@ export const Cadastrar = () => {
       onSubmit={handleSubmit}
       className="mt-4 p-4 bg-white shadow-lg rounded-lg"
     >
-      {message && (
-        <div className="alert alert-success mb-3" role="alert">
-          {message}
+      <div className="d-flex flex-column">
+        <h2 className="mb-3 display-6">Cadastrar livro</h2>
+        {errorMessage && (
+          <div className="alert alert-danger mb-3" role="alert">
+            {errorMessage}
+          </div>
+        )}
+        {message && (
+          <div className="alert alert-success mb-3" role="alert">
+            {message}
+          </div>
+        )}
+        <div className="mb-3">
+          <label htmlFor="title" className="form-label">
+            Título
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Insira o título do livro"
+            required
+          />
         </div>
-      )}
-      <div className="mb-3">
-        <label htmlFor="title" className="form-label">
-          Título
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Insira o título do livro"
-          required
-        />
+        <div className="mb-3">
+          <label htmlFor="author" className="form-label">
+            Autor
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="author"
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
+            placeholder="Insira o nome do autor"
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="publisher" className="form-label">
+            Editora
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="publisher"
+            value={publisher}
+            onChange={(e) => setPublisher(e.target.value)}
+            placeholder="Insira o nome da editora"
+            required
+          />
+        </div>
+        <button type="submit" className="btn btn-primary text-center">
+          Cadastrar
+        </button>
       </div>
-      <div className="mb-3">
-        <label htmlFor="author" className="form-label">
-          Autor
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="author"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-          placeholder="Insira o nome do autor"
-          required
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="publisher" className="form-label">
-          Editora
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="publisher"
-          value={publisher}
-          onChange={(e) => setPublisher(e.target.value)}
-          placeholder="Insira o nome da editora"
-          required
-        />
-      </div>
-      <button type="submit" className="btn btn-primary text-center">
-        Cadastrar
-      </button>
     </form>
   );
 };
