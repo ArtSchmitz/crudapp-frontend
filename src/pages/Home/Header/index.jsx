@@ -27,11 +27,6 @@ function Header() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/atualizar" className="nav-link">
-                Atualizar
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link to="/cadastrar" className="nav-link">
                 Cadastrar
               </Link>

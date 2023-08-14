@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export const Lista = () => {
   const [book, setBook] = useState([]);
@@ -27,6 +28,7 @@ export const Lista = () => {
         {book.map((book) => (
           <li key={book.id} className="list-group-item fs-5">
             {book.title} - {book.author} - {book.publisher}
+            <Link to={`/atualizar/${book.id}`}>{book.title}</Link>
           </li>
         ))}
       </ul>
