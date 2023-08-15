@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Container, Icons } from "./styles.js";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export const Lista = () => {
@@ -12,7 +13,7 @@ export const Lista = () => {
         .then((response) => {
           console.log(response.data);
           setBook(response.data);
-          console.log(response)
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);
@@ -26,10 +27,19 @@ export const Lista = () => {
       <h1 className="mb-3 display-4">Lista de livros</h1>
       <ul className="list-group">
         {book.map((book) => (
-          <li key={book.id} className="list-group-item fs-5">
-            {book.title} - {book.author} - {book.publisher}
-            <Link to={`/atualizar/${book.id}`}>{book.title}</Link>
-          </li>
+          <Container>
+            <li key={book.id} className="list-group-item fs-5">
+              {book.title} - {book.author} - {book.publisher}
+              <Icons>
+                <Link to={`/atualizar/${book.id}`}>
+                  <img className="ml-3" src="icons/pencil.png" alt="Editar" width={30} />
+                </Link>
+                <Link to={`/atualizar/${book.id}`}>
+                  <img src="icons/delete.png" alt="Editar" width={30} />
+                </Link>
+              </Icons>
+            </li>
+          </Container>
         ))}
       </ul>
     </div>
