@@ -6,6 +6,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 export const Lista = () => {
   const [book, setBook] = useState([]);
   const [deletedBook, setDeletedBook] = useState(null);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     const getBook = () => {
@@ -32,14 +33,29 @@ export const Lista = () => {
       .delete('http://127.0.0.1:8000/api/book/'+id)
       .then((response) => {
         console.log(response.data);
-        alert("Livro deletado com sucesso");
+        setMessage("Livro deletado com sucesso");
         setDeletedBook(id);
       })
   }
 
+  useEffect(() => {
+    let timer;
+    if (message) {
+      timer = setTimeout(() => {
+        setMessage("");
+      }, 2000);
+    }
+    return () => clearTimeout(timer);
+  }, [message]);
+
   return (
     <div className="container mt-4">
       <h1 className="mb-3 display-4">Lista de livros</h1>
+      {message && (
+          <div className="alert alert-success mb-3" role="alert">
+            {message}
+          </div>
+        )}
       <ul className="list-group">
         {book.map((book) => (
           <Container>
