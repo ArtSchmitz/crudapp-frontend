@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Icons } from "./styles.js";
+import { Container, Icons, Button } from "./styles.js";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export const Lista = () => {
   const [book, setBook] = useState([]);
+  const [deletedBook, setDeletedBook] = useState(null);
 
   useEffect(() => {
     const getBook = () => {
@@ -20,7 +21,21 @@ export const Lista = () => {
         });
     };
     getBook();
-  }, []);
+
+    if (deletedBook !== null) {
+      setDeletedBook(null);
+    }
+  }, [deletedBook]);
+
+  const deleteProduct = (id) => {
+    axios
+      .delete('http://127.0.0.1:8000/api/book/'+id)
+      .then((response) => {
+        console.log(response.data);
+        alert("Livro deletado com sucesso");
+        setDeletedBook(id);
+      })
+  }
 
   return (
     <div className="container mt-4">
@@ -32,11 +47,11 @@ export const Lista = () => {
               {book.title} - {book.author} - {book.publisher}
               <Icons>
                 <Link to={`/atualizar/${book.id}`}>
-                  <img className="ml-3" src="icons/pencil.png" alt="Editar" width={30} />
+                  <img src="icons/pencil.png" alt="Editar" width={30} />
                 </Link>
-                <Link to={`/atualizar/${book.id}`}>
+                <Button onClick={() => deleteProduct(book.id)}>
                   <img src="icons/delete.png" alt="Editar" width={30} />
-                </Link>
+                </Button>
               </Icons>
             </li>
           </Container>

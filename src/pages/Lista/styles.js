@@ -9,8 +9,13 @@ export const Icons = styled.div`
     display: flex;
     justify-content: flex-end;
     margin-top: -30px;
+`;
 
-    img{
-        margin-left: 20px;
+export const Button = styled.button`
+    cursor: pointer;
+    width: 40px;
+    border: none;
+    :hover{
+        opacity: .85;
     }
 `;
