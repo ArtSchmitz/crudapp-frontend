@@ -99,6 +99,18 @@ export const Atualizar = () => {
             placeholder="Publisher"
           />
         </div>
+        <div className="mb-3">
+          <label htmlFor="image" className="form-label">
+            Capa
+          </label>
+          <input
+            type="file"
+            className="form-control"
+            name="image"
+            value={inputs.image || ""}
+            onChange={handleChange}
+          />
+        </div>
         <button type="submit" className="btn btn-primary text-center">
           Atualizar
         </button>

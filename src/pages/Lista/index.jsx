@@ -15,7 +15,6 @@ export const Lista = () => {
         .then((response) => {
           console.log(response.data);
           setBook(response.data);
-          console.log(response);
         })
         .catch((error) => {
           console.log(error);

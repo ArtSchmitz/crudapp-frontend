@@ -13,6 +13,7 @@ export const Cadastrar = () => {
     title: title,
     author: author,
     publisher: publisher,
+    image: image,
   };
 
   const addBook = async () => {
@@ -110,11 +111,12 @@ export const Cadastrar = () => {
           <label htmlFor="image" className="form-label">
             Capa
           </label>
-          <input type="file"
-          className="form-control"
-          id="image"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
+          <input
+            type="text"
+            className="form-control"
+            id="image"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
           />
         </div>
         <button type="submit" className="btn btn-primary text-center">
