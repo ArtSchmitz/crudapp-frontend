@@ -5,9 +5,9 @@ export const Cadastrar = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publisher, setPublisher] = useState("");
+  const [image, setImage] = useState("");
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
 
   const newBook = {
     title: title,
@@ -23,6 +23,7 @@ export const Cadastrar = () => {
         setTitle("");
         setAuthor("");
         setPublisher("");
+        setImage("");
         setMessage(response.data.message);
       })
       .catch((error) => {
@@ -103,6 +104,17 @@ export const Cadastrar = () => {
             onChange={(e) => setPublisher(e.target.value)}
             placeholder="Insira o nome da editora"
             required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="image" className="form-label">
+            Capa
+          </label>
+          <input type="file"
+          className="form-control"
+          id="image"
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
           />
         </div>
         <button type="submit" className="btn btn-primary text-center">

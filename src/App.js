@@ -5,6 +5,7 @@ import { Home } from "./pages/Home";
 import { Lista } from "./pages/Lista";
 import { Cadastrar } from "./pages/Cadastrar";
 import { Atualizar } from "./pages/Atualizar";
+import { Visualizar } from "./pages/Visualizar";
 import Footer from "./pages/Home/Footer";
 import Header from "./pages/Home/Header";
 
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/lista" component={Lista} />
           <Route exact path="/cadastrar" component={Cadastrar} />
           <Route exact path="/atualizar/:id" component={Atualizar} />
+          <Route exact path="/visualizar/:id" component={Visualizar} />
         </Switch>
         <Footer />
       </Router>
